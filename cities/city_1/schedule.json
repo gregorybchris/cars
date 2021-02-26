@@ -1,0 +1,24 @@
+[
+  {
+    "light": 1,
+    "signals": [
+      { "road": 1, "length": 1 },
+      { "road": 5, "length": 1 }
+    ]
+  },
+  {
+    "light": 2,
+    "signals": [{ "road": 2, "length": 1 }]
+  },
+  {
+    "light": 3,
+    "signals": [
+      { "road": 3, "length": 1 },
+      { "road": 6, "length": 1 }
+    ]
+  },
+  {
+    "light": 4,
+    "signals": [{ "road": 4, "length": 1 }]
+  }
+]

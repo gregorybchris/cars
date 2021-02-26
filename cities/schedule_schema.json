@@ -1,0 +1,19 @@
+{
+  "type": "array",
+  "elem": {
+    "type": "object",
+    "attr": {
+      "light": "number",
+      "signals": {
+        "type": "array",
+        "elem": {
+          "type": "object",
+          "attr": {
+            "road": "number",
+            "length": "number"
+          }
+        }
+      }
+    }
+  }
+}

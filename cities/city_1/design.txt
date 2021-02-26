@@ -1,0 +1,14 @@
+"""
+Roads 1, 2, 3, 4 go clockwise
+5 goes North, 6 goes South
+
+              L1
+            /|   |\
+        R1/  |   |  \R2
+        /    |   |    \
+      L4   R5|   |R6   L2
+        \    |   |    /
+        R4\  |   |  /R3
+            \|   |/
+               L3
+"""
