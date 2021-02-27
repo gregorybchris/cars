@@ -1,0 +1,13 @@
+{
+  "type": "array",
+  "elem": {
+    "type": "object",
+    "attr": {
+      "id": "number",
+      "roads": { "type": "array", "elem": "number" }
+    }
+  },
+  "cons": {
+    "unique": "@all.id"
+  }
+}

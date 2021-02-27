@@ -8,6 +8,8 @@ class Light:
 
         self.signals = None
 
+        self.used = False
+
         self.signal_number = 0
         self.signal_time = 0
 
@@ -19,7 +21,7 @@ class Light:
 
     def tick(self):
         self.signal_time += 1
-        if self.signal_time == self.signal.length:
+        if self.signal_time == self.signal.time:
             self.signal_time = 0
             self.signal_number = (self.signal_number + 1) % len(self.signals)
 

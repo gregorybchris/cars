@@ -1,0 +1,42 @@
+[
+  { "light": 1, "signals": [{ "road": 20, "time": 1 }] },
+  { "light": 2, "signals": [{ "road": 1, "time": 1 }] },
+  { "light": 3, "signals": [{ "road": 2, "time": 1 }] },
+  {
+    "light": 4,
+    "signals": [
+      { "road": 3, "time": 1 },
+      { "road": 4, "time": 1 }
+    ]
+  },
+  { "light": 5, "signals": [{ "road": 17, "time": 1 }] },
+  { "light": 6, "signals": [{ "road": 5, "time": 1 }] },
+  { "light": 7, "signals": [{ "road": 6, "time": 1 }] },
+  {
+    "light": 8,
+    "signals": [
+      { "road": 7, "time": 1 },
+      { "road": 8, "time": 1 }
+    ]
+  },
+  { "light": 9, "signals": [{ "road": 18, "time": 1 }] },
+  { "light": 10, "signals": [{ "road": 9, "time": 1 }] },
+  { "light": 11, "signals": [{ "road": 10, "time": 1 }] },
+  {
+    "light": 12,
+    "signals": [
+      { "road": 11, "time": 1 },
+      { "road": 12, "time": 1 }
+    ]
+  },
+  { "light": 13, "signals": [{ "road": 19, "time": 1 }] },
+  { "light": 14, "signals": [{ "road": 13, "time": 1 }] },
+  { "light": 15, "signals": [{ "road": 14, "time": 1 }] },
+  {
+    "light": 16,
+    "signals": [
+      { "road": 15, "time": 1 },
+      { "road": 16, "time": 1 }
+    ]
+  }
+]

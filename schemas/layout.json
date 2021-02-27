@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "attr": {
+    "time_allocated": "number",
+    "roads": {
+      "type": "array",
+      "elem": {
+        "type": "object",
+        "attr": {
+          "id": "number",
+          "length": "number"
+        }
+      },
+      "cons": {
+        "unique": "@all.id"
+      }
+    },
+    "lights": {
+      "type": "array",
+      "elem": {
+        "type": "object",
+        "attr": {
+          "id": "number",
+          "roads_in": {
+            "type": "array",
+            "elem": "number",
+            "cons": {
+              "unique": true
+            }
+          },
+          "roads_out": {
+            "type": "array",
+            "elem": "number",
+            "cons": {
+              "unique": true
+            }
+          }
+        }
+      },
+      "cons": {
+        "unique": "@all.id"
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 from color_printing import print_rgb, Color
 
 
-def simulate(city):
-    tick = 0
-    completions = 0
+def simulate(city, following=None):
+    if following is None:
+        following = [car_id for car_id in city.cars]
 
-    while tick < city.time_allocated:
-        print_rgb(f"Tick: {tick}", Color.BLUE)
+    arrivals = 0
+    for tick in range(city.time_allocated):
+        print_rgb(f"TICK {tick}", Color.BLUE)
 
         # Update all car positions
         for car_id, car in city.cars.items():
@@ -19,8 +20,9 @@ def simulate(city):
             # Mark this car as arrived if if it has arrived
             if not car.arrived and car.on_last_road() and car.at_end_of_road(road.length):
                 car.arrived = True
-                completions += 1
-                print_rgb(f"Car {car.name} completed its journey", Color.GREEN)
+                arrivals += 1
+                if car.id in following:
+                    print_rgb(f"{car.name} ARRIVED", Color.GREEN)
                 continue
 
             # Move car forward
@@ -33,22 +35,25 @@ def simulate(city):
                     road.cars_waiting.put(car_id)
 
                 # Check if light is green and car is first in line, then move
-                if light.is_green(road.id) and road.is_first_in_line(car_id):
+                if light.is_green(road.id) and not light.used and road.is_first_in_line(car_id):
                     road.cars_waiting.get()
                     car.next_road()
+                    light.used = True
                     next_road = city.roads[car.road]
-                    print_rgb(f"{car.name} passed through {light.name} "
-                              f"from {road.name} to {next_road.name}", Color.PURPLE)
+                    if car.id in following:
+                        print_rgb(f"{car.name} PASS {light.name} "
+                                f"{road.name} {next_road.name}", Color.PURPLE)
                 else:
-                    print_rgb(f"{car.name} waiting at {light.name}", Color.YELLOW)
+                    if car.id in following:
+                        print_rgb(f"{car.name} WAIT {light.name}", Color.YELLOW)
             else:
                 mile = car.drive()
-                print(f"{car.name} drove on {road.name} to mile {mile}")
+                if car.id in following:
+                    print_rgb(f"{car.name} DRIVE {road.name} {mile}", Color.GRAY)
 
         # Update all lights
         for _, light in city.lights.items():
             light.tick()
-
-        tick += 1
+            light.used = False
     
-    return completions
+    return arrivals

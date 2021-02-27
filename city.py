@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from jsonvl import validate_file
+
 from car import Car
 from light import Light
 from road import Road
@@ -8,8 +10,11 @@ from signal import Signal
 
 
 class City:
+    CARS_FILE = 'cars.json'
     LAYOUT_FILE = 'layout.json'
     SCHEDULE_FILE = 'schedule.json'
+
+    SCHEMAS_DIR = Path(__file__).parent / 'schemas'
 
     def __init__(self, roads, lights, cars, time_allocated):
         self.roads = roads
@@ -18,7 +23,18 @@ class City:
         self.time_allocated = time_allocated
 
     @classmethod
+    def validate(cls, city_config_path):
+        for filename in [cls.CARS_FILE, cls.LAYOUT_FILE, cls.SCHEDULE_FILE]:
+            schema_path = cls.SCHEMAS_DIR / filename
+            data_path = Path(city_config_path) / filename
+            validate_file(data_path, schema_path)
+
+    @classmethod
     def from_config(cls, city_config_path):
+        cars_filepath = Path(city_config_path) / cls.CARS_FILE
+        with open(cars_filepath, 'r') as f:
+            car_records = json.load(f)
+
         layout_filepath = Path(city_config_path) / cls.LAYOUT_FILE
         with open(layout_filepath, 'r') as f:
             layout = json.load(f)
@@ -46,9 +62,12 @@ class City:
                 roads[road_out].light_in = id
             lights[id] = Light(id, roads_in_ids, roads_out_ids)
 
-        for car_record in layout['cars']:
+        for car_record in car_records:
             id = car_record['id']
             road_ids = car_record['roads']
+
+            # TODO: Check that the order of roads is possible
+
             cars[id] = Car(id, road_ids)
 
         time_allocated = layout['time_allocated']
@@ -58,8 +77,8 @@ class City:
             signals = []
             for signal_record in light_record['signals']:
                 road_id = signal_record['road']
-                length = signal_record['length']
-                signal = Signal(road_id, length)
+                time = signal_record['time']
+                signal = Signal(road_id, time)
                 signals.append(signal)
             lights[light_id].signals = signals
 

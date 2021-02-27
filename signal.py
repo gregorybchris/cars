@@ -1,4 +1,4 @@
 class Signal:
-    def __init__(self, road, length):
+    def __init__(self, road, time):
         self.road = road
-        self.length = length
+        self.time = time

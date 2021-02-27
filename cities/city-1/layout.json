@@ -13,13 +13,5 @@
     { "id": 2, "roads_in": [2], "roads_out": [3] },
     { "id": 3, "roads_in": [3, 6], "roads_out": [4, 5] },
     { "id": 4, "roads_in": [4], "roads_out": [1] }
-  ],
-  "cars": [
-    { "id": 1, "roads": [3, 4] },
-    { "id": 2, "roads": [2, 3, 6] },
-    { "id": 3, "roads": [5] },
-    { "id": 4, "roads": [5, 6, 4] },
-    { "id": 5, "roads": [6, 5, 2] },
-    { "id": 6, "roads": [1, 2] }
   ]
 }

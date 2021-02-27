@@ -10,10 +10,16 @@
           "type": "object",
           "attr": {
             "road": "number",
-            "length": "number"
+            "time": "number"
           }
+        },
+        "cons": {
+          "unique": "@all.road"
         }
       }
     }
+  },
+  "cons": {
+    "unique": "@all.light"
   }
 }

@@ -7,10 +7,12 @@ from typing import Tuple
 class Color:
     """Colors for color printing."""
 
-    BLUE = (80, 90, 250)
+    BLUE = (90, 100, 255)
+    GRAY = (130, 130, 130)
     GREEN = (60, 180, 70)
     RED = (200, 80, 90)
     PURPLE = (150, 90, 250)
+    WHITE = (190, 190, 190)
     YELLOW = (180, 180, 80)
 
 
