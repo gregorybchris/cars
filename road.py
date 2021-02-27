@@ -1,5 +1,6 @@
 from serial_queue import SerialQueue
 
+
 class Road:
     def __init__(self, id, length):
         assert isinstance(id, int)

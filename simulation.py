@@ -42,18 +42,20 @@ def simulate(city, following=None):
                     next_road = city.roads[car.road]
                     if car.id in following:
                         print_rgb(f"{car.name} PASS {light.name} "
-                                f"{road.name} {next_road.name}", Color.PURPLE)
+                                  f"{road.name} {next_road.name}", Color.PURPLE)
                 else:
                     if car.id in following:
-                        print_rgb(f"{car.name} WAIT {light.name}", Color.YELLOW)
+                        print_rgb(f"{car.name} WAIT {light.name}",
+                                  Color.YELLOW)
             else:
                 mile = car.drive()
                 if car.id in following:
-                    print_rgb(f"{car.name} DRIVE {road.name} {mile}", Color.GRAY)
+                    print_rgb(
+                        f"{car.name} DRIVE {road.name} {mile}", Color.GRAY)
 
         # Update all lights
         for _, light in city.lights.items():
             light.tick()
             light.used = False
-    
+
     return arrivals

@@ -21,7 +21,7 @@ class Car:
 
     def on_last_road(self):
         return self.road_number == len(self.roads) - 1
-    
+
     def next_road(self):
         self.road_number += 1
         self.road_miles = 0

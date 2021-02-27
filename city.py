@@ -42,7 +42,7 @@ class City:
         schedule_filepath = Path(city_config_path) / cls.SCHEDULE_FILE
         with open(schedule_filepath, 'r') as f:
             schedule = json.load(f)
-        
+
         lights = {}
         roads = {}
         cars = {}
